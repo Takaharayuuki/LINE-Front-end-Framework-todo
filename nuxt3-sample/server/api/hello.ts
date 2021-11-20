@@ -13,6 +13,6 @@ export default async (req: IncomingMessage, res: ServerResponse)=> {
     data = await $fetch(`https://api.tvmaze.com/search/shows?q=${search}`);
   }
   res.writeHead(200, {"Content-Type" : "application/json"})
-  res.write(JSON.stringify(data));
+  res.write(JSON.stringify(data[0]));
   res.end();
 }
