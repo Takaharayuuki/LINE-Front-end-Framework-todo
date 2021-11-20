@@ -5,8 +5,55 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIFF-sample</title>
+  <style>
+.btn-gradient-3d-orange {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #c58668;
+}
+
+.btn-gradient-3d-orange:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+  </style>
 </head>
 <body>
   <h2>LIFF-sample</h2>
+  <button class="btn-gradient-3d-orange" onclick="sendLineMessage()">メッセージを送信する。</button>
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  
+  <script type="module">
+    import { getFunctions } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-functions.js';
+    const functions = getFunctions();
+    const liffId = encodeURIComponent(functions.config().apikey.liffid);
+    console.log(liffId);
+    liff.init({
+    liffId: liffId, // Use own liffId
+    })
+    .then(() => {});
+
+    function sendLineMessage() {
+      liff.sendMessages([
+        {
+            type: 'text',
+            text: 'Hello LIFF!!',
+        },
+    ])
+        .then(() => {
+            window.alert('メッセージの送信が完了しました。');
+        })
+        .catch((error) => {
+            window.alert('Error sending message: ' + error);
+        });
+    }
+  </script>
 </body>
 </html>
