@@ -2,5 +2,5 @@
 LINE Front-end Framework  
 Firebaseにデプロイ  
 https://liff-sample-40130.web.app/    
-デプロイしたwebアプリをLINEの画面で表示    
+LINEの画面で開くとメッセージを送信できる    
 https://liff.line.me/1656650841-GVE0qP97
